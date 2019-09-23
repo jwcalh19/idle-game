@@ -1,31 +1,22 @@
-var score = 1; // Create a variable to store the score in
-                 
-let button = new Button('BOOM!'); 
-button.hide()
+var score = 0; 
 
-postToPage(score);
-createButton('Button +', btnPress);
-createButton('Button -', btnPressOther);
+var title = new Title('Home Simulator'); 
+var hometype = 'None';
+let home = new Text('Home = ' + hometype);
+let heading = new HTMLElement('h3', "Wilton's Money");
+var button = new Button('Money +', btnPress);         
+var upgradebutton = new Button('Upgrade Home');
+upgradebutton.hide()
+var scr = new Text(score);                     
 
-setInterval(scoreIncrease, 1000);
-setInterval(btnPress, 1000);
+setInterval(btnPress, 1000);   
 
 function btnPress() {
-  score = score + 5;
-  postToPage(score);
+  score++;         
+  scr.edit(score); 
 }
-function btnPressOther() {
-  score--;
-  postToPage(score);                 
+function upgradehome(){
+if (score > 50) {
+  upgradebutton.show();
 }
-function button2() {
-  score = 0;
-  
-}
-function scoreIncrease() {
-  score++;                       
-
-  if(score > 10) {
-    button.show();               
-  }
 }
