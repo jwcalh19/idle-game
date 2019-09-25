@@ -12,6 +12,7 @@ An engine for creating web-based idle games with vanilla Javascript and Bootstra
   * Rows & Columns
 * [Adding a Function to a Button](#adding-a-function-to-a-button)
 * [Setting Up a Loop](#setting-up-a-loop)
+* [Changing Font](#changing-font)
 
 
 ----
@@ -131,8 +132,11 @@ var rowSection = new Section('row'); // Create the row to store the columns in
 var column1 = new Section('col');    // Create the first column
 var column2 = new Section('col');    // Create the second column
 
-column1.add(text1);
-column2.add(text2);
+rowSection.add(column1);  // Add the first column to the row
+rowSection.add(column2);  // Add the second column to the row
+
+column1.add(text1);  // Add the text to the first column
+column2.add(text2);  // Add the text to the second column
 ```
 
 ----
@@ -161,12 +165,53 @@ Create a loop using the `setInterval()` function. The first value in the parenth
 Here is an example:
 
 ```javascript
-setInterval(createButton, 1000); // Run the "createButton" function once every 1000 milliseconds (once every second)
+var loop = setInterval(createButton, 1000); // Run the "createButton" function once every 1000 milliseconds (once every second)
 
 function createButton() {
   let button = new Button('hello!');
 }
+
+function stopLoop() {
+  clearInterval(loop);
+}
 ```
+
+To end the loop, you need to call the `clearInterval()` function and pass in the variable you stored the loop in. Look at the `stopLoop()` function above for an example.
+
+----
+
+# Changing Font
+
+As long as you know the name of the font you would like to use, you can change the font of either the entire page or an individual element.
+
+Here's how you change the font of an individual element (in this example, a button):
+
+```javascript
+var button = new Button('hello'); // First, create a button if you don't have one
+
+button.changeFont('Impact');      // Then, change it to the 'Impact' font type
+```
+
+To change the font of the whole page, use the `changeFont()` function.
+
+```javascript
+changeFont('Impact') // This changes all the fonts on a page to 'Impact'
+```
+
+If you use `changeFont()`, and then change the font of an individual element as well, then the individual element will change it's font and everything else on the page will use the font you specified with `changeFont()`. Here's an example:
+
+```javascript
+changeFont('Arial'); // Change all the fonts on the page to Arial
+
+var button1 = new Button('Hello');  // Create the first button
+var button2 = new Button('Goodbye') // Create the second button
+
+button1.changeFont('Impact');       // The first button is changed to impact
+
+// The second button stays with 'Arial'
+```
+
+Change the font to help the player understand important buttons, or to convey a mood or emotion.
 
 ----
 
