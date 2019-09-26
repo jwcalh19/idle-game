@@ -14,13 +14,14 @@ upgradebutton3.hide()
 var duckbutton = new Button('Buy A Duck')
 duckbutton.hide()
 var scr = new Text(score);                     
-
+var upmoney = 1;
 setInterval(btnPress, 1000);   
 
 function btnPress() { //makes score go up
-  score++;         
+  score = score + upmoney;         
   scr.edit(score); 
-  buyduck();
+
+  buyduckpress();
   buyhomea();
   buyhomeb();
   buyhomec();
@@ -28,7 +29,8 @@ function btnPress() { //makes score go up
 function buyhomea(){    //makes a button that lets you buy an apartment
 if (score > 49) {
   upgradebutton.show();
-
+  
+  
 }
 }
 function buyhomeb(){         //makes a button that lets you buy an house
@@ -46,25 +48,29 @@ function buyhomeb(){         //makes a button that lets you buy an house
 function upgradepress(){
   home.edit('Home = Apartment')
 score = score - 50;
- }
+upgradebutton.hide();
+}
  
  function upgradepress2(){
   home.edit('Home = House')
 score = score - 300;
+upgradebutton2.hide();
  }
  
  function upgradepress3(){
   home.edit('Home = Mansion')
 score = score - 1000;
+upgradebutton3.hide();
  }
+
  
- function buyduck(){
+ function buyduckpress(){
   if (score > 99) {
     duckbutton.show();
-  } else{
-    duckbutton.hide();
+    upmoney = upmoney + 1;
+    score = score - 100;
   }
   }
- function duckpress(){
-
- }
+ 
+  
+  
