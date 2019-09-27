@@ -5,11 +5,11 @@ var hometype = 'None';
 let home = new Text('Home = ' + hometype);
 let heading = new HTMLElement('h3', "Wilton's Money");
 var button = new Button('Money +', btnPress);         
-var upgradebutton = new Button('Upgrade To Apartment', upgradepress);
+var upgradebutton = new Button('Buy An Apartment', upgradepress);
 upgradebutton.hide()
-var upgradebutton2 = new Button('Upgrade To House', upgradepress2);
+var upgradebutton2 = new Button('Buy A House', upgradepress2);
 upgradebutton2.hide()
-var upgradebutton3 = new Button('Upgrade To Mansion', upgradepress3);
+var upgradebutton3 = new Button('Buy A Mansion', upgradepress3);
 upgradebutton3.hide()
 var duckbutton = new Button('Buy A Duck')
 duckbutton.hide()
@@ -20,8 +20,7 @@ setInterval(btnPress, 1000);
 function btnPress() { //makes score go up
   score = score + upmoney;         
   scr.edit(score); 
-
-  buyduckpress();
+  
   buyhomea();
   buyhomeb();
   buyhomec();
@@ -48,29 +47,20 @@ function buyhomeb(){         //makes a button that lets you buy an house
 function upgradepress(){
   home.edit('Home = Apartment')
 score = score - 50;
+upmoney = upmoney + 1;
 upgradebutton.hide();
 }
  
  function upgradepress2(){
   home.edit('Home = House')
 score = score - 300;
+upmoney = upmoney + 3;
 upgradebutton2.hide();
  }
  
  function upgradepress3(){
   home.edit('Home = Mansion')
 score = score - 1000;
+upmoney = upmoney + 5;
 upgradebutton3.hide();
  }
-
- 
- function buyduckpress(){
-  if (score > 99) {
-    duckbutton.show();
-    upmoney = upmoney + 1;
-    score = score - 100;
-  }
-  }
- 
-  
-  
